@@ -1,7 +1,11 @@
-
-FROM ubuntu:14.04
-RUN apt-get update && apt-get install -y cowsay && apt-get install -y fortunes
-ENV PATH $PATH:/usr/games
-CMD fortune | cowsay
+FROM python:3.5
+MAINTAINER Robus Gauli <robusgauli@gmail.com>
+RUN apt-get update
+ADD ./webapp/requirements.txt /tmp/requirements.txt
+RUN pip isntall -qr /tmp/requirements.txt
+ADD ./webapp /opt/webapp/
+WORKDIR /opt/webapp
+EXPOSE 5000
+CMD ["python","app.py"]
 
 

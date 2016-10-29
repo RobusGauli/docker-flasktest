@@ -1,4 +1,4 @@
-lask
+flask
 Jinja2
 Werkzeug
 distribute
